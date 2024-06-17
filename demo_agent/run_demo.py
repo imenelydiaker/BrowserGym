@@ -95,6 +95,30 @@ def parse_args():
         default=True,
         help="Use thinking in the agent (chain-of-thought prompting).",
     )
+    parser.add_argument(
+        "--use_self_consistency",
+        type=str2bool,
+        default=False,
+        help="Use self-consistency in the agent's observation space.",
+    )
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=0.1,
+        help="Temperature for the chat model (higher values are more creative).",
+    )
+    parser.add_argument(
+        "--max_steps",
+        type=int,
+        default=10,
+        help="Maximum number of steps to run the experiment for.",
+    )
+    parser.add_argument(
+        "--output_dir",
+        type=str,
+        default="results",
+        help="Output directory to save the experiment results.",
+    )
 
     return parser.parse_args()
 
@@ -110,7 +134,7 @@ WARNING this demo agent will soon be moved elsewhere. Expect it to be removed at
     env_args = EnvArgs(
         task_name=args.task_name,
         task_seed=None,
-        max_steps=100,
+        max_steps=args.max_steps,
         headless=args.headless,
         viewport={"width": 1500, "height": 1280},
         slow_mo=args.slow_mo,
@@ -125,6 +149,7 @@ WARNING this demo agent will soon be moved elsewhere. Expect it to be removed at
         agent_args=GenericAgentArgs(
             chat_model_args=ChatModelArgs(
                 model_name=args.model_name,
+                temperature=args.temperature,
                 max_total_tokens=128_000,  # "Maximum total tokens for the chat model."
                 max_input_tokens=126_000,  # "Maximum tokens for the input to the chat model."
                 max_new_tokens=2_000,  # "Maximum total tokens for the chat model."
@@ -137,6 +162,7 @@ WARNING this demo agent will soon be moved elsewhere. Expect it to be removed at
                 use_memory=False,  # "Enables the agent with a memory (scratchpad)."
                 use_history=args.use_history,
                 use_diff=False,  # "Prompt the agent with the difference between the current and past observation."
+                use_self_consistency=args.use_self_consistency,  # "Prompt the agent with the self-consistency."
                 use_past_error_logs=True,  # "Prompt the agent with the past error logs."
                 use_action_history=True,  # "Prompt the agent with the action history."
                 multi_actions=args.multi_actions,
@@ -149,7 +175,7 @@ WARNING this demo agent will soon be moved elsewhere. Expect it to be removed at
         ),
     )
 
-    exp_args.prepare(Path("./results"))
+    exp_args.prepare(Path(f"./{args.output_dir}"))
     exp_args.run()
 
 
