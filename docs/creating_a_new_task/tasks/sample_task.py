@@ -10,7 +10,7 @@ class SampleTask(AbstractBrowserTask):
 
     @classmethod
     def get_task_id(cls):
-        return "newarena.sample_task"
+        return "sample_task"
 
     def setup(self, page: playwright.sync_api.Page) -> Tuple[str, dict]:
         """Set up everything needed to execute the task."""
