@@ -28,7 +28,7 @@ class SampleTask(AbstractBrowserTask):
         self, page: playwright.sync_api.Page, chat_messages: list[str]
     ) -> Tuple[float, bool, str, dict]:
         """Compute reward based on reaching final URL."""
-        if page.url() == "https://en.wikipedia.org/wiki/Eiffel_Tower":
+        if page.url == "https://en.wikipedia.org/wiki/Eiffel_Tower":
             return 1.0, True, "Task completed", {}
         else:
             return 0.0, False, "Task not completed", {}
