@@ -5,6 +5,8 @@ Core
 ____
 
 .. toctree::
+    :maxdepth: 1
+
     core/core.rst
 
 
@@ -15,10 +17,12 @@ _____________________________
    core/action_space.rst
    core/observation_space.rst
 
-Environments
-____________
+Experiments
+___________
 
 .. toctree::
-    environments/miniwob.rst
-    environments/webarena.rst
-    environments/workarena.rst
+   :maxdepth: 1
+
+   experiments/experiments.rst
+
+

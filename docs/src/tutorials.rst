@@ -15,12 +15,22 @@ This section provides tutorials to help build new environments and tasks.
         :link: examples/create_custom_task.html
 
         :bdg-primary:`Custom task`
+    
+    .. grid-item-card:: Build an agent
+        :link: examples/build_an_agent.html
+
+        :bdg-primary:`Build an agent`
+    
+    .. grid-item-card:: Run an experiment
+        :link: examples/run_an_experiment.html
+
+        :bdg-primary:`Run an experiment`
 
 
 
 .. toctree::
     :maxdepth: 1
     :hidden:
+    :glob:
     
-    examples/walkthrough.rst
-    examples/create_custom_task.rst
+    examples/*

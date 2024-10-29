@@ -4,20 +4,7 @@ WorkArena
 `BrowserGym` integrates `WebArena` enviroment. For more information about this enviroment, please refer to the `WorkArena <https://github.com/ServiceNow/WorkArena>`_ official documentation.
 
 
-BrowserGym API
-""""""""""""""
-
-.. currentmodule:: browsergym
-
-.. autosummary::
-   :recursive:
-   :toctree: generated
-   :caption: WorkArena
-
-   workarena
-
-
-Usage
+Setup
 """""
 
 **Create a ServiceNow Developer Instance**
@@ -68,7 +55,7 @@ Your installation is now complete! 🎉
 
 .. code-block:: python
 
-    import gym
+    import gymnasium as gym
     import browsergym.workarena
 
     env = gym.make("browsergym/workarena.servicenow.filter-asset-list")
